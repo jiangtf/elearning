@@ -1,0 +1,31 @@
+.list-item {
+    border-radius: 10px;
+    text-align: center;
+    color: #fff;
+    margin-bottom: 15px;
+    overflow: hidden;
+    background: -webkit-linear-gradient(left, #00b08b, #129483);
+    background: -o-linear-gradient(right, #00b08b, #129483);
+    background: -moz-linear-gradient(right, #00b08b, #129483);
+    background: linear-gradient(to right, #00b08b, #129483); /* 标准的语法（必须放在最后） */
+}
+
+.list-item.active {
+    background: -webkit-linear-gradient(left, #99d7c5, #96c9c1);
+    background: -o-linear-gradient(right, #99d7c5, #96c9c1);
+    background: -moz-linear-gradient(right, #99d7c5, #96c9c1);
+    background: linear-gradient(to right, #99d7c5, #96c9c1); /* 标准的语法（必须放在最后） */
+}
+
+.list-item p, .list-item .btn {
+    font-size: 14px;
+}
+
+.list-item .btn {
+    display: inline-block;
+    border-radius: 10px;
+    background-color: #fff;
+    color: #129483;
+    padding: 3px 15px;
+    margin-bottom: 15px;
+}
