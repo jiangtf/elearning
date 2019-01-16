@@ -1,0 +1,21 @@
+{% extends 'layout.html' %}
+{% block title %}{{ title }}{% endblock %}
+{% block pages %}
+    <div class="page" style="background-color: #fff">
+        <header class="bar bar-nav">
+            <a class="icon icon-left pull-left back"></a>
+            <h1 class="title">{{ info.desc }}</h1>
+        </header>
+        <div class="content">
+            <div class="content-padded">
+                {{ info.name|safe }}
+                <div class="kewaiyd">
+                    <h4>知识点：</h4>
+                    <p>{{ info.keypoint }}</p>
+                    <h4>试题解析：</h4>
+                    {{ info.detail|safe }}
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
