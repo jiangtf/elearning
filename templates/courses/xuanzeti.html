@@ -18,7 +18,7 @@
                         {% if i.choice_type == 'S' %}
                             <li>
                                 <label class="label-checkbox item-content">
-                                    <input type="radio" name="rbnschoice-{{ forloop.counter }}">
+                                    <input type="radio" name="rbnschoice-{{ i.pk }}">
                                     <div class="item-media"><i class="icon icon-form-checkbox"></i></div>
                                     <div class="item-inner">
                                         <div class="item-title-row">
@@ -29,7 +29,7 @@
                             </li>
                             <li>
                                 <label class="label-checkbox item-content">
-                                    <input type="radio" name="rbnschoice-{{ forloop.counter }}">
+                                    <input type="radio" name="rbnschoice-{{ i.pk }}">
                                     <div class="item-media"><i class="icon icon-form-checkbox"></i></div>
                                     <div class="item-inner">
                                         <div class="item-title-row">
@@ -40,7 +40,7 @@
                             </li>
                             <li{% ifequal i.choice_C|length 0 %} class="hidden"{% endifequal %}>
                                 <label class="label-checkbox item-content">
-                                    <input type="radio" name="rbnschoice-{{ forloop.counter }}">
+                                    <input type="radio" name="rbnschoice-{{ i.pk }}">
                                     <div class="item-media"><i class="icon icon-form-checkbox"></i></div>
                                     <div class="item-inner">
                                         <div class="item-title-row">
@@ -51,7 +51,7 @@
                             </li>
                             <li{% ifequal i.choice_D|length 0 %} class="hidden"{% endifequal %}>
                                 <label class="label-checkbox item-content">
-                                    <input type="radio" name="rbnschoice-{{ forloop.counter }}">
+                                    <input type="radio" name="rbnschoice-{{ i.pk }}">
                                     <div class="item-media"><i class="icon icon-form-checkbox"></i></div>
                                     <div class="item-inner">
                                         <div class="item-title-row">
@@ -63,7 +63,7 @@
                         {% else %}
                             <li>
                                 <label class="label-checkbox item-content">
-                                    <input type="checkbox" name="chkmchoice-{{ forloop.counter }}">
+                                    <input type="checkbox" name="chkmchoice-{{ i.pk }}">
                                     <div class="item-media"><i class="icon icon-form-checkbox"></i></div>
                                     <div class="item-inner">
                                         <div class="item-title-row">
@@ -74,7 +74,7 @@
                             </li>
                             <li>
                                 <label class="label-checkbox item-content">
-                                    <input type="checkbox" name="chkmchoice-{{ forloop.counter }}">
+                                    <input type="checkbox" name="chkmchoice-{{ i.pk }}">
                                     <div class="item-media"><i class="icon icon-form-checkbox"></i></div>
                                     <div class="item-inner">
                                         <div class="item-title-row">
@@ -85,7 +85,7 @@
                             </li>
                             <li{% ifequal i.choice_C|length 0 %} class="hidden"{% endifequal %}>
                                 <label class="label-checkbox item-content">
-                                    <input type="checkbox" name="chkmchoice-{{ forloop.counter }}">
+                                    <input type="checkbox" name="chkmchoice-{{ i.pk }}">
                                     <div class="item-media"><i class="icon icon-form-checkbox"></i></div>
                                     <div class="item-inner">
                                         <div class="item-title-row">
@@ -96,7 +96,7 @@
                             </li>
                             <li{% ifequal i.choice_D|length 0 %} class="hidden"{% endifequal %}>
                                 <label class="label-checkbox item-content">
-                                    <input type="checkbox" name="chkmchoice-{{ forloop.counter }}">
+                                    <input type="checkbox" name="chkmchoice-{{ i.pk }}">
                                     <div class="item-media"><i class="icon icon-form-checkbox"></i></div>
                                     <div class="item-inner">
                                         <div class="item-title-row">
@@ -109,10 +109,16 @@
                     </ul>
                     <div class="list-block-label">
                         {% if forloop.last %}
-                            <a href="javascript:void(0)" class="button button-round button-fill">提交</a>
+                            <p class="buttons-row">
+                                <a href="javascript:void(0)" class="button button-round active">提交</a>
+                                <a href="javascript:void(0)" class="button button-round resolve">解析</a>
+                            </p>
                         {% else %}
-                            <a href="#pageIdx-{{ forloop.counter|add:1 }}"
-                               class="button button-round button-fill">下一题</a>
+                            <p class="buttons-row">
+                                <a href="#pageIdx-{{ forloop.counter|add:1 }}"
+                                   class="button button-round active">下一题</a>
+                                <a href="javascript:void(0)" class="button button-round resolve">解析</a>
+                            </p>
                         {% endif %}
                     </div>
                 </div>
