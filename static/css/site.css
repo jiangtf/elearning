@@ -1,3 +1,13 @@
+/* 全局定义 */
+.content {
+    background-color: #fff;
+}
+
+.hidden {
+    display: none;
+}
+
+/* 首页-选择题型 */
 .list-item {
     border-radius: 10px;
     text-align: center;
@@ -28,6 +38,11 @@
     color: #129483;
     padding: 3px 15px;
     margin-bottom: 15px;
+}
+
+/* 选择题 */
+.card-content-inner h4 {
+    margin-top: 0;
 }
 
 /* 课外阅读 */

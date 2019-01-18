@@ -1,0 +1,129 @@
+{% extends 'layout.html' %}
+{% load tagfunc %}
+{% block title %}{{ title }}{% endblock %}
+{% block pages %}
+    {% for i in items %}
+        <div class="page{% if forloop.first %} page-current{% endif %}" id="pageIdx-{{ forloop.counter }}">
+            <header class="bar bar-nav">
+                <a class="button button-link button-nav pull-left back">
+                    <span class="icon icon-left"></span>
+                    返回
+                </a>
+                <h1 class="title">{{ i.desc }}</h1>
+            </header>
+            <div class="content">
+                <div class="content-block-title">{{ i.name|removetags:'p br' }}</div>
+                <div class="list-block media-list">
+                    <ul>
+                        {% if i.choice_type == 'S' %}
+                            <li>
+                                <label class="label-checkbox item-content">
+                                    <input type="radio" name="rbnschoice-{{ forloop.counter }}">
+                                    <div class="item-media"><i class="icon icon-form-checkbox"></i></div>
+                                    <div class="item-inner">
+                                        <div class="item-title-row">
+                                            <div class="item-title">{{ i.choice_A }}</div>
+                                        </div>
+                                    </div>
+                                </label>
+                            </li>
+                            <li>
+                                <label class="label-checkbox item-content">
+                                    <input type="radio" name="rbnschoice-{{ forloop.counter }}">
+                                    <div class="item-media"><i class="icon icon-form-checkbox"></i></div>
+                                    <div class="item-inner">
+                                        <div class="item-title-row">
+                                            <div class="item-title">{{ i.choice_B }}</div>
+                                        </div>
+                                    </div>
+                                </label>
+                            </li>
+                            <li{% ifequal i.choice_C|length 0 %} class="hidden"{% endifequal %}>
+                                <label class="label-checkbox item-content">
+                                    <input type="radio" name="rbnschoice-{{ forloop.counter }}">
+                                    <div class="item-media"><i class="icon icon-form-checkbox"></i></div>
+                                    <div class="item-inner">
+                                        <div class="item-title-row">
+                                            <div class="item-title">{{ i.choice_C }}</div>
+                                        </div>
+                                    </div>
+                                </label>
+                            </li>
+                            <li{% ifequal i.choice_D|length 0 %} class="hidden"{% endifequal %}>
+                                <label class="label-checkbox item-content">
+                                    <input type="radio" name="rbnschoice-{{ forloop.counter }}">
+                                    <div class="item-media"><i class="icon icon-form-checkbox"></i></div>
+                                    <div class="item-inner">
+                                        <div class="item-title-row">
+                                            <div class="item-title">{{ i.choice_D }}</div>
+                                        </div>
+                                    </div>
+                                </label>
+                            </li>
+                        {% else %}
+                            <li>
+                                <label class="label-checkbox item-content">
+                                    <input type="checkbox" name="chkmchoice-{{ forloop.counter }}">
+                                    <div class="item-media"><i class="icon icon-form-checkbox"></i></div>
+                                    <div class="item-inner">
+                                        <div class="item-title-row">
+                                            <div class="item-title">{{ i.choice_A }}</div>
+                                        </div>
+                                    </div>
+                                </label>
+                            </li>
+                            <li>
+                                <label class="label-checkbox item-content">
+                                    <input type="checkbox" name="chkmchoice-{{ forloop.counter }}">
+                                    <div class="item-media"><i class="icon icon-form-checkbox"></i></div>
+                                    <div class="item-inner">
+                                        <div class="item-title-row">
+                                            <div class="item-title">{{ i.choice_B }}</div>
+                                        </div>
+                                    </div>
+                                </label>
+                            </li>
+                            <li{% ifequal i.choice_C|length 0 %} class="hidden"{% endifequal %}>
+                                <label class="label-checkbox item-content">
+                                    <input type="checkbox" name="chkmchoice-{{ forloop.counter }}">
+                                    <div class="item-media"><i class="icon icon-form-checkbox"></i></div>
+                                    <div class="item-inner">
+                                        <div class="item-title-row">
+                                            <div class="item-title">{{ i.choice_C }}</div>
+                                        </div>
+                                    </div>
+                                </label>
+                            </li>
+                            <li{% ifequal i.choice_D|length 0 %} class="hidden"{% endifequal %}>
+                                <label class="label-checkbox item-content">
+                                    <input type="checkbox" name="chkmchoice-{{ forloop.counter }}">
+                                    <div class="item-media"><i class="icon icon-form-checkbox"></i></div>
+                                    <div class="item-inner">
+                                        <div class="item-title-row">
+                                            <div class="item-title">{{ i.choice_D }}</div>
+                                        </div>
+                                    </div>
+                                </label>
+                            </li>
+                        {% endif %}
+                    </ul>
+                    <div class="list-block-label">
+                        {% if forloop.last %}
+                            <a href="javascript:void(0)" class="button button-round button-fill">提交</a>
+                        {% else %}
+                            <a href="#pageIdx-{{ forloop.counter|add:1 }}"
+                               class="button button-round button-fill">下一题</a>
+                        {% endif %}
+                    </div>
+                </div>
+                <div class="card hidden">
+                    <div class="card-header">正确答案：{{ i.answer }}</div>
+                    <div class="card-content">
+                        <div class="card-content-inner"><h4>试题解析:</h4>{{ i.detail|safe }}</div>
+                    </div>
+                    <div class="card-footer">知识点：{{ i.keypoint }}</div>
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+{% endblock %}

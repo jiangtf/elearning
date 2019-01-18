@@ -19,7 +19,7 @@ class subjectAdmin(admin.ModelAdmin):
 
 
 class choice_questionAdmin(admin.ModelAdmin):
-    list_display = ('questions_org', 'desc')
+    list_display = ('questions_org', 'desc', 'add_time')
     search_fields = ('desc',)
 
 
