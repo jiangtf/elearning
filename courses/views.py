@@ -24,5 +24,5 @@ def tiankongti(request):
 def kewaiyuedu(request):
     '课外阅读'
     title = '课外阅读'
-    info = outside_reading.objects.last()
+    items = outside_reading.objects.all()
     return render(request, 'courses/kewaiyuedu.html', locals())
