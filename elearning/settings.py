@@ -24,7 +24,7 @@ SECRET_KEY = '1*b6ckon0_^(nq#z1s5w=douyj97(mhrcm+qz66)yzbzkt@y^*'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 AUTH_USER_MODEL = 'users.User'
 # Application definition
@@ -82,7 +82,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'elearning',
         'USER': 'root',
-        'PASSWORD': 'fly#snow02.',
+        'PASSWORD': 'gxADMIN0833!@#',
         'HOST': '127.0.0.1',
         'PORT': '3306',
         'OPTIONS': {'charset': 'utf8'},
@@ -110,7 +110,7 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/2.1/topics/i18n/
 
-LANGUAGE_CODE = 'zh_Hans'
+LANGUAGE_CODE = 'zh-Hans'
 
 TIME_ZONE = 'Asia/Shanghai'
 
