@@ -105,7 +105,7 @@ class completion_question(models.Model):
     keypoint = models.CharField(max_length=300, verbose_name=u"知识点", null=True, blank=True)
     point = models.IntegerField(default=0, verbose_name=u'题目分值', blank=True)
     complexity = models.CharField(max_length=300, verbose_name=u"难度", null=True, blank=True)
-    show_time = models.CharField(verbose_name=u"题目出现时间填写(月-日的形式：如12-18)", max_length=10, )
+    show_time = models.DateField(verbose_name=u"题目出现时间(月-日的形式：如12-18)", max_length=10, )
     add_time = models.DateTimeField(null=True, blank=True, verbose_name=u"添加时间", auto_now_add=True)
     # detail = models.CharField(verbose_name=u"试题解析", max_length=500)
     detail = UEditorField('试题解析', height=100, width=1000,

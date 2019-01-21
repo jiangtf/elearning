@@ -8,6 +8,12 @@ $(function () {
     $(document).on('click', '.resolve', function (e) {
         $(this).parents('.list-block').next('.card').removeClass('hidden');
     });
+    //选择题提交答案
+    $(document).on('click', '#btnchksmt', function (e) {
+        var rbnitems = $(':radio').length;
+        var chkitems = $(':checkbox').length;
+        alert('singlechoices:' + rbnitems + '\ncheckboxchs:' + chkitems);
+    });
 
     $.init();    //默认必须要执行$.init(),实际业务里一般不会在HTML文档里执行，通常是在业务页面代码的最后执行
     $(".swiper-container").swiper({

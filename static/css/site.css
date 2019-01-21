@@ -7,6 +7,19 @@
     display: none;
 }
 
+/* 标题栏 */
+.green-bar {
+    background: -webkit-linear-gradient(left, #06ae8a, #149182);
+    background: -o-linear-gradient(right, #06ae8a, #149182);
+    background: -moz-linear-gradient(right, #06ae8a, #149182);
+    background: linear-gradient(to right, #06ae8a, #149182); /* 标准的语法（必须放在最后） */
+}
+
+.green-bar a.button, .green-bar a.icon, .green-bar h1 {
+    color: #fff;
+}
+
+/* ---------------------------- sep line ------------------------ */
 /* 首页-选择题型 */
 .list-item {
     border-radius: 10px;
@@ -40,9 +53,15 @@
     margin-bottom: 15px;
 }
 
+
 /* 选择题 */
 .card-content-inner h4 {
     margin-top: 0;
+}
+
+/* 填空题 */
+.item-title.label, .item-input input {
+    font-size: small !important;
 }
 
 /* 课外阅读 */

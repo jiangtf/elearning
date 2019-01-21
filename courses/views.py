@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.http import HttpResponse
-from .models import choice_question, outside_reading
+from .models import choice_question, completion_question, outside_reading
 
 
 def index(request):
@@ -12,6 +12,13 @@ def xuanzeti(request):
     title = '选择题'
     items = choice_question.objects.all()
     return render(request, 'courses/xuanzeti.html', locals())
+
+
+def tiankongti(request):
+    '填空题'
+    title = '填空题'
+    items = completion_question.objects.all()
+    return render(request, 'courses/tiankongti.html', locals())
 
 
 def kewaiyuedu(request):

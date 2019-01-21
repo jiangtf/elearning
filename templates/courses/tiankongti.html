@@ -1,0 +1,109 @@
+{% extends 'layout.html' %}
+{% block title %}{{ title }}{% endblock %}
+{% block pages %}
+    <form action="" name="tiankongtfrm" method="post">
+        {% for i in items %}
+            <div class="page{% if forloop.first %} page-current{% endif %}" id="pageIdx-{{ forloop.counter }}">
+                <header class="bar bar-nav green-bar">
+                    <a class="button button-link button-nav pull-left back">
+                        <span class="icon icon-left"></span>
+                        返回
+                    </a>
+                    <h1 class="title">{{ i.desc }}</h1>
+                </header>
+                <div class="content">
+                    <div class="content-block-title">{{ i.name|safe }}</div>
+                    <div class="list-block">
+                        <ul>
+                            <li>
+                                <div class="item-content">
+                                    <div class="item-inner">
+                                        <div class="item-title label">填空一：</div>
+                                        <div class="item-input">
+                                            <input type="text" placeholder="请输入" name="tiankong-{{ i.pk }}-1">
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="item-content">
+                                    <div class="item-inner">
+                                        <div class="item-title label">填空二：</div>
+                                        <div class="item-input">
+                                            <input type="text" placeholder="请输入" name="tiankong-{{ i.pk }}-2">
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+
+                            {% if i.answer_3|length > 0 %}
+                                <li>
+                                    <div class="item-content">
+                                        <div class="item-inner">
+                                            <div class="item-title label">填空三：</div>
+                                            <div class="item-input">
+                                                <input type="text" placeholder="请输入" name="tiankong-{{ i.pk }}-3">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                            {% endif %}
+                            {% if i.answer_4|length > 0 %}
+                                <li>
+                                    <div class="item-content">
+                                        <div class="item-inner">
+                                            <div class="item-title label">填空四：</div>
+                                            <div class="item-input">
+                                                <input type="text" placeholder="请输入" name="tiankong-{{ i.pk }}-4">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                            {% endif %}
+                            {% if i.answer_5|length > 0 %}
+                                <li>
+                                    <div class="item-content">
+                                        <div class="item-inner">
+                                            <div class="item-title label">填空五：</div>
+                                            <div class="item-input">
+                                                <input type="text" placeholder="请输入" name="tiankong-{{ i.pk }}-5">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                            {% endif %}
+                        </ul>
+                        <div class="list-block-label">
+                            {% if forloop.last %}
+                                <p class="buttons-row">
+                                    <a href="javascript:void(0)" id="btnchksmt"
+                                       class="button button-round active">提交</a>
+                                    <a href="javascript:void(0)" class="button button-round resolve">解析</a>
+                                </p>
+                            {% else %}
+                                <p class="buttons-row">
+                                    <a href="#pageIdx-{{ forloop.counter|add:1 }}"
+                                       class="button button-round active">下一题</a>
+                                    <a href="javascript:void(0)" class="button button-round resolve">解析</a>
+                                </p>
+                            {% endif %}
+                        </div>
+                    </div>
+                    <div class="card hidden">
+                        <div class="card-header">正确答案：<br/>
+                            {{ i.answer_1 }}<br/>
+                            {{ i.answer_2 }}<br/>
+                            {% if i.answer_3|length > 0 %}{{ i.answer_3 }}<br/>{% endif %}
+                            {% if i.answer_4|length > 0 %}{{ i.answer_4 }}<br/>{% endif %}
+                            {% if i.answer_5|length > 0 %}{{ i.answer_5 }}{% endif %}
+                        </div>
+                        <div class="card-content">
+                            <div class="card-content-inner"><h4>试题解析:</h4>{{ i.detail|safe }}</div>
+                        </div>
+                        <div class="card-footer">知识点：{{ i.keypoint }}</div>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </form>
+{% endblock %}

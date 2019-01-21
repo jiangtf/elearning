@@ -4,10 +4,11 @@
 __author__ = 'zween'
 __mtime__ = '2019-01-16'
 from django.urls import path
-from .views import index, xuanzeti, kewaiyuedu
+from .views import index, xuanzeti, tiankongti, kewaiyuedu
 
 urlpatterns = [
     path('', index),
     path('xuanzeti/', xuanzeti, name='choices'),
+    path('tiankongti/', tiankongti, name='tiankong'),
     path('kewaiyuedu/', kewaiyuedu, name='kewaiyuedu')
 ]

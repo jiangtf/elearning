@@ -29,7 +29,7 @@ class reading_comprehensionAdmin(admin.ModelAdmin):
 
 
 class completion_questionAdmin(admin.ModelAdmin):
-    list_display = ('questions_org', 'desc')
+    list_display = ('questions_org', 'desc', 'add_time')
     search_fields = ('desc',)
 
 
