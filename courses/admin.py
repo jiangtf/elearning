@@ -17,30 +17,36 @@ class subjectAdmin(admin.ModelAdmin):
     list_display = ('name',)
     search_fields = ('name',)
 
+class grade_course_subjectAdmin(admin.ModelAdmin):
+    list_display = ('grade_course','subject_type','show_type')
+    search_fields = ('grade_course','subject_type')
+
+
 
 class choice_questionAdmin(admin.ModelAdmin):
-    list_display = ('questions_org', 'desc', 'add_time')
-    search_fields = ('desc',)
+    list_display = ('questions_org', 'name', 'add_time')
+    search_fields = ('name',)
 
 
 class reading_comprehensionAdmin(admin.ModelAdmin):
-    list_display = ('questions_org', 'desc')
-    search_fields = ('desc',)
+    list_display = ('questions_org', 'name')
+    search_fields = ('name',)
 
 
 class completion_questionAdmin(admin.ModelAdmin):
-    list_display = ('questions_org', 'desc', 'add_time')
-    search_fields = ('desc',)
+    list_display = ('questions_org', 'name', 'add_time')
+    search_fields = ('name',)
 
 
 class outside_readingAdmin(admin.ModelAdmin):
-    list_display = ('questions_org', 'desc', 'add_time')
-    search_fields = ('desc',)
+    list_display = ('questions_org', 'name', 'add_time')
+    search_fields = ('name',)
 
 
 admin.site.register(grade_course, GradeCourseAdmin)
 admin.site.register(grade, GradeAdmin)
 admin.site.register(subject, subjectAdmin)
+admin.site.register(grade_course_subject, grade_course_subjectAdmin)
 admin.site.register(choice_question, choice_questionAdmin)
 admin.site.register(reading_comprehension, reading_comprehensionAdmin)
 admin.site.register(completion_question, completion_questionAdmin)

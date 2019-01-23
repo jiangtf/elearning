@@ -10,7 +10,7 @@ class grade(models.Model):
     add_time = models.DateTimeField(null=True, blank=True, verbose_name=u"添加时间", auto_now_add=True)
 
     class Meta:
-        verbose_name = u'年级'
+        verbose_name = u'A年级'
         verbose_name_plural = verbose_name
         ordering = ['order']
 
@@ -25,7 +25,7 @@ class subject(models.Model):
     add_time = models.DateTimeField(null=True, blank=True, verbose_name=u"添加时间", auto_now_add=True)
 
     class Meta:
-        verbose_name = u'学科'
+        verbose_name = u'B学科'
         verbose_name_plural = verbose_name
         ordering = ['order']
 
@@ -43,7 +43,7 @@ class grade_course(models.Model):
 
     class Meta:
         unique_together = ("grade_name", "subject_name")
-        verbose_name = '年级学科学费'
+        verbose_name = 'C年级学科学费'
         verbose_name_plural = verbose_name
         ordering = ['order']
 
@@ -51,10 +51,33 @@ class grade_course(models.Model):
         return self.grade_name.name + '+' + self.subject_name.name
 
 
+class grade_course_subject(models.Model):
+    'D年级学科题目'
+    grade_course = models.ForeignKey(grade_course, verbose_name=u"D年级学科题目", on_delete=models.CASCADE)
+    TYPE_CHOICE = (
+        (u'C', u'选择'),
+        (u'F', u'填空'),
+        (u'R', u'阅读理解'),
+        (u'K', u'课外阅读'),
+    )
+    subject_type = models.CharField(max_length=2, choices=TYPE_CHOICE, verbose_name=u"题目类型", )
+    show_type = models.CharField(max_length=300, verbose_name=u"题目显示名称", )
+    order = models.IntegerField('显示顺序', default=0)
+    add_time = models.DateTimeField(null=True, blank=True, verbose_name=u"添加时间", auto_now_add=True)
+
+    class Meta:
+        unique_together = ("grade_course", "subject_type")
+        verbose_name = 'D年级学科题目表'
+        verbose_name_plural = verbose_name
+        ordering = ['order']
+
+    def __str__(self):
+        return self.grade_course.__str__() + '+' + self.subject_type
+
+
 class choice_question(models.Model):
     '选择题库'
     questions_org = models.ForeignKey(grade_course, verbose_name=u"题目分类", on_delete=models.CASCADE)
-    desc = models.CharField(verbose_name=u"题目描述", max_length=50, )
     name = UEditorField('题目', height=300, width=1000,
                         default=u'', blank=True, imagePath="uploads/images/",
                         toolbars='besttome', filePath='uploads/files/')
@@ -86,13 +109,12 @@ class choice_question(models.Model):
         ordering = ['order']
 
     def __str__(self):
-        return self.questions_org.__str__() + '(' + self.desc + ')'
+        return self.questions_org.__str__() + '(' + self.name + ')'
 
 
 class completion_question(models.Model):
     '填空题库'
     questions_org = models.ForeignKey(grade_course, verbose_name=u"题目分类", on_delete=models.CASCADE)
-    desc = models.CharField(verbose_name=u"题目描述", max_length=50, )
     name = UEditorField('题目', height=300, width=1000,
                         default=u'', blank=True, imagePath="uploads/images/",
                         toolbars='besttome', filePath='uploads/files/')
@@ -119,13 +141,12 @@ class completion_question(models.Model):
         ordering = ['order']
 
     def __str__(self):
-        return self.questions_org.__str__() + '(' + self.desc + ')'
+        return self.questions_org.__str__() + '(' + self.name + ')'
 
 
 class outside_reading(models.Model):
     '课外阅读'
     questions_org = models.ForeignKey(grade_course, verbose_name=u"题目分类", on_delete=models.CASCADE)
-    desc = models.CharField(verbose_name=u"题目描述", max_length=50, )
     name = UEditorField('课外阅读', height=300, width=1000,
                         default=u'', blank=True, imagePath="uploads/images/",
                         toolbars='besttome', filePath='uploads/files/')
@@ -133,7 +154,7 @@ class outside_reading(models.Model):
     keypoint = models.CharField(max_length=300, verbose_name=u"知识点", null=True, blank=True)
     point = models.IntegerField(default=0, verbose_name=u'题目分值', blank=True)
     complexity = models.CharField(max_length=300, verbose_name=u"难度", null=True, blank=True)
-    show_time = models.CharField(verbose_name=u"题目出现时间填写(月-日的形式：如12-18)", max_length=10,)
+    show_time = models.CharField(verbose_name=u"题目出现时间填写(月-日的形式：如12-18)", max_length=10, )
     add_time = models.DateTimeField(null=True, blank=True, verbose_name=u"添加时间", auto_now_add=True)
     # detail = models.CharField(verbose_name=u"试题解析", max_length=500)
     detail = UEditorField('试题解析', height=100, width=1000,
@@ -147,7 +168,7 @@ class outside_reading(models.Model):
         ordering = ['order']
 
     def __str__(self):
-        return self.questions_org.__str__() + '(' + self.desc + ')'
+        return self.questions_org.__str__() + '(' + self.name + ')'
 
 
 class reading_comprehension(models.Model):
@@ -159,7 +180,6 @@ class reading_comprehension(models.Model):
     多选题：开头以'M'开头，题目与答案之间用'@'分开，选项之间则用'|'分割开。多个答案之间用';'分割开
     '''
     questions_org = models.ForeignKey(grade_course, verbose_name=u"题目分类", on_delete=models.CASCADE)
-    desc = models.CharField(verbose_name=u"题目描述", max_length=50, )
     name = UEditorField('题目', height=300, width=1000,
                         default=u'', blank=True, imagePath="uploads/images/",
                         toolbars='besttome', filePath='uploads/files/')
@@ -173,6 +193,12 @@ class reading_comprehension(models.Model):
     answer_4 = models.CharField(max_length=300, verbose_name=u"答案4", null=True, blank=True)
     question_5 = models.TextField(max_length=300, verbose_name=u"问题5", null=True, blank=True)
     answer_5 = models.CharField(max_length=300, verbose_name=u"答案5", null=True, blank=True)
+    question_6 = models.TextField(max_length=300, verbose_name=u"问题6", null=True, blank=True)
+    answer_6 = models.CharField(max_length=300, verbose_name=u"答案6", null=True, blank=True)
+    question_7 = models.TextField(max_length=300, verbose_name=u"问题7", null=True, blank=True)
+    answer_7 = models.CharField(max_length=300, verbose_name=u"答案7", null=True, blank=True)
+    question_8 = models.TextField(max_length=300, verbose_name=u"问题8", null=True, blank=True)
+    answer_8 = models.CharField(max_length=300, verbose_name=u"答案8", null=True, blank=True)
     keypoint = models.CharField(max_length=300, verbose_name=u"知识点", null=True, blank=True)
     point = models.IntegerField(default=0, verbose_name=u'题目分值', null=True, blank=True)
     complexity = models.CharField(max_length=300, verbose_name=u"难度", null=True, blank=True)
@@ -190,4 +216,4 @@ class reading_comprehension(models.Model):
         ordering = ['order']
 
     def __str__(self):
-        return self.questions_org.__str__() + '(' + self.desc + ')'
+        return self.questions_org.__str__() + '(' + self.name + ')'

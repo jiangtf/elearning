@@ -83,7 +83,7 @@ DATABASES = {
         'NAME': 'elearning',
         'USER': 'root',
         'PASSWORD': 'gxADMIN0833!@#',
-        'HOST': '127.0.0.1',
+        'HOST': '47.106.38.17',
         'PORT': '3306',
         'OPTIONS': {'charset': 'utf8'},
     }
@@ -127,6 +127,9 @@ DATETIME_FORMAT = 'Y-m-d H:i:s'
 # https://docs.djangoproject.com/en/2.1/howto/static-files/
 
 STATIC_URL = '/static/'
+
+
+
 
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'static'),
