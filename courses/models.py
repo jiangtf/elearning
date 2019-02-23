@@ -1,5 +1,5 @@
 from django.db import models
-
+import django.utils.timezone as tz
 from DjangoUeditor.models import UEditorField
 
 
@@ -217,3 +217,24 @@ class reading_comprehension(models.Model):
 
     def __str__(self):
         return self.questions_org.__str__() + '(' + self.name + ')'
+
+
+class Impxls(models.Model):
+    '导入题库'
+    TYPE_CHOICE = (
+        (u'C', u'选择'),
+        (u'F', u'填空'),
+        (u'R', u'阅读理解'),
+        (u'K', u'课外阅读'),
+    )
+    subject_type = models.CharField(max_length=2, choices=TYPE_CHOICE, verbose_name=u"题目类型")
+    xlsfile = models.FileField(verbose_name='题库文件', upload_to='uploads/%Y/%m/%d/')
+    remark = models.CharField(verbose_name='备注', max_length=200, blank=True)
+    updatetime = models.DateTimeField(verbose_name='更新日期', default=tz.now)
+
+    class Meta:
+        verbose_name = '题库导入'
+        verbose_name_plural = verbose_name
+
+    def __str__(self):
+        return self.subject_type
