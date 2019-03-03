@@ -2,7 +2,6 @@ from django.db import models
 from abc import abstractmethod
 from users.models import User
 
-from users.models import User
 from courses.models import grade_course, choice_question, reading_comprehension, completion_question, outside_reading
 import django.utils.timezone as timezone
 

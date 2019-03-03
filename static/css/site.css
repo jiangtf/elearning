@@ -7,6 +7,104 @@
     display: none;
 }
 
+.bg-maincolor {
+    background-color: #489D87;
+}
+
+.bg-white {
+    background-color: #fff;
+}
+
+.border-radius-10 {
+    border-radius: 10px;
+}
+
+.m-t-10 {
+    margin-top: 10px;
+}
+
+.m-b-10 {
+    margin-bottom: 10px;
+}
+
+.p-15 {
+    padding: 15px;
+}
+
+.radio {
+    display: block;
+    border: 1px solid #28B24C;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    font-size: 14px;
+    line-height: 30px;
+    border-radius: 5px;
+    padding-top: 6px;
+    padding-left: 20px;
+}
+
+.radio input {
+    display: inline-block;
+    margin-right: 5px;
+}
+
+.radio small {
+    display: inline-block;
+    float: right;
+    color: gray;
+}
+
+.help-text {
+    color: gray;
+}
+
+.button-linearblue {
+    color: #fff;
+    background: -webkit-linear-gradient(left, #16A278, #168270);
+    background: -o-linear-gradient(right, #16A278, #168270);
+    background: -moz-linear-gradient(right, #16A278, #168270);
+    background: linear-gradient(to right, #16A278, #168270);
+    border: 0 none;
+}
+
+.button-white {
+    color: #489D87;
+    background-color: #fff;
+}
+
+/* 报名页面表单 */
+.form-normal {
+    padding: 15px;
+    background-color: #fff;
+    border-radius: 10px;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    display: block;
+    max-width: 100%;
+    margin-bottom: 5px;
+    font-weight: 700;
+}
+
+.form-control {
+    display: block;
+    width: 100%;
+    height: 34px;
+    padding: 6px 12px;
+    font-size: 14px;
+    line-height: 1.42857143;
+    color: #555;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+    box-shadow: inset 1px 1px rgba(0, 0, 0, .075);
+}
+
 /* 标题栏 */
 .green-bar {
     background: -webkit-linear-gradient(left, #06ae8a, #149182);

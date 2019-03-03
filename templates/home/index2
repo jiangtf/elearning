@@ -1,0 +1,51 @@
+{% extends 'layout.html' %}
+{% block title %}{{ title }}{% endblock %}
+{% block pages %}
+    <div class="page">
+        <!-- 这里是页面内容区 -->
+        <div class="content-padded">
+            <!-- Slider -->
+            <div class="swiper-container">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide"><img src="/static/img/adver_01.png" alt="" style="width: 100%;"></div>
+                    <div class="swiper-slide"><img src="/static/img/adver_02.png" alt="" style="width: 100%;"></div>
+                    <div class="swiper-slide"><img src="/static/img/adver_03.png" alt="" style="width: 100%;"></div>
+                </div>
+                <!-- If we need pagination -->
+                <div class="swiper-pagination"></div>
+            </div>
+        </div>
+        <div class="content-padded">
+            <div class="row">
+                <div class="col-50">
+                    <div class="list-item active">
+                        <h3>选择题</h3>
+                        <p>共 {{ xuanze }}道题</p>
+                        <a href="{% url 'choices' %}" class="btn btn-default">开始答题</a>
+                    </div>
+                </div>
+                <div class="col-50">
+                    <div class="list-item">
+                        <h3>填空题</h3>
+                        <p>共 {{ tiankong }} 道题</p>
+                        <a href="{% url 'tiankong' %}" class="btn btn-default">开始答题</a>
+                    </div>
+                </div>
+                <div class="col-50">
+                    <div class="list-item">
+                        <h3>课外阅读</h3>
+                        <p>共 {{ kewaiyd }} 道题</p>
+                        <a href="{% url 'kewaiyuedu' %}" class="btn btn-default">开始答题</a>
+                    </div>
+                </div>
+                <div class="col-50">
+                    <div class="list-item">
+                        <h3>阅读理解</h3>
+                        <p>共 {{ yuedulijie }} 道题</p>
+                        <a href="#" class="btn btn-default">开始答题</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

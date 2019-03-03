@@ -1,0 +1,66 @@
+{% extends 'layout.html' %}
+{% block title %}{{ title }}{% endblock %}
+{% block pages %}
+    <div class="page">
+        <header class="bar bar-nav">
+            <a class="icon icon-left pull-left back"></a>
+            <h1 class="title">{{ title }}</h1>
+        </header>
+        <div class="content bg-maincolor">
+            <div class="content-padded">
+                <form id="enrollfrm" name="enrollfrm" action="" method="post" class="form-normal">
+                    <div class="m-b-10">
+                        <div class="form-group">
+                            <label for="grade">请选择年级</label>
+                            <select id="grade" class="form-control">
+                                <option>初中一年级</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="kemu">请选择科目</label>
+                            <select id="kemu" class="form-control">
+                                <option>语文</option>
+                                <option>数学</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>请选择学习周期</label>
+                            <div class="radio">
+                                <label><input type="radio" name="period" value="286"> 一学年286元
+                                    <small>
+                                        <del>原价：350元</del>
+                                        （立省100元）
+                                    </small>
+                                </label>
+                            </div>
+                            <div class="radio">
+                                <label><input type="radio" name="period" value="150"> 一学期150元
+                                    <small>
+                                        <del>原价：200元</del>
+                                        （立省50元）
+                                    </small>
+                                </label>
+                            </div>
+                            <div class="radio">
+                                <label><input type="radio" name="period" value="28"> 连续包月28元
+                                    <small>
+                                        <del>原价：30元</del>
+                                        （立省2元）
+                                    </small>
+                                </label>
+                            </div>
+                            <small class="help-text">备注：支付成功一周后，可延长年限</small>
+                        </div>
+                    </div>
+                </form>
+                <div class="bg-white border-radius-10 m-t-10 p-15">
+                    <div class="form-group">
+                        <label for="telephone">请填写手机号</label>
+                        <input type="tel" name="telephone" id="telephone" form="enrollfrm" class="form-control">
+                    </div>
+                </div>
+                <p><input type="submit" class="button button-big button-white button-round" value="提交" form="enrollfrm"></p>
+            </div>
+        </div>
+    </div>
+{% endblock %}

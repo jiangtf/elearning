@@ -1,3 +1,7 @@
 from django.shortcuts import render
 
-# Create your views here.
+
+def enroll(request):
+    '在线报名'
+    title = '在线报名'
+    return render(request, 'usercourse/enroll.html', locals())
