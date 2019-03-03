@@ -22,5 +22,4 @@ urlpatterns = [
     re_path(r'^ueditor/', include('DjangoUeditor.urls')),
     path('', index),
     path('course/', include('courses.urls')),
-    path('usercourse/', include('usercourse.urls'))
 ]
